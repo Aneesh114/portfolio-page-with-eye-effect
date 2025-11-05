@@ -88,82 +88,14 @@ export default function App() {
   };
 
   const downloadCV = () => {
-    // Create a simple placeholder PDF (base64 encoded)
-    const pdfContent = `%PDF-1.4
-1 0 obj
-<<
-/Type /Catalog
-/Pages 2 0 R
->>
-endobj
-2 0 obj
-<<
-/Type /Pages
-/Kids [3 0 R]
-/Count 1
->>
-endobj
-3 0 obj
-<<
-/Type /Page
-/Parent 2 0 R
-/Resources <<
-/Font <<
-/F1 4 0 R
->>
->>
-/MediaBox [0 0 612 792]
-/Contents 5 0 R
->>
-endobj
-4 0 obj
-<<
-/Type /Font
-/Subtype /Type1
-/BaseFont /Helvetica
->>
-endobj
-5 0 obj
-<<
-/Length 100
->>
-stream
-BT
-/F1 24 Tf
-100 700 Td
-(Aneesh Reddy Dasari - CV) Tj
-ET
-endstream
-endobj
-xref
-0 6
-0000000000 65535 f
-0000000009 00000 n
-0000000058 00000 n
-0000000115 00000 n
-0000000262 00000 n
-0000000341 00000 n
-trailer
-<<
-/Size 6
-/Root 1 0 R
->>
-startxref
-492
-%%EOF`;
+  const link = document.createElement("a");
+  link.href = "/Aneesh_Reddy_Dasari_Resume.pdf"; // Path inside the public folder
+  link.download = "Aneesh_Reddy_Dasari_Resume.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
-    const blob = new Blob([pdfContent], {
-      type: "application/pdf",
-    });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "Aneesh_Reddy_Dasari_CV.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
   const skills = [
     // 💻 Programming & Frontend
     {
